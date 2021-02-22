@@ -1,23 +1,26 @@
 {
-  "name": "vitedge-docs",
-  "private": true,
-  "directories": {
-    "doc": "docs",
-    "example": "example"
-  },
+  "name": "example",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs"
+    "setup": "yarn && (cd node-site && yarn) && (cd worker-site && yarn)",
+    "dev": "vitedge dev --ssr",
+    "build": "rm -rf dist && vitedge build",
+    "refresh": "rm -rf node_modules/vitedge && cp -r ../../core node_modules/vitedge && cp ../../core/bin/cli.js node_modules/.bin/vitedge",
+    "serve:worker": "cd worker-site && yarn serve"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/frandiox/vitedge.git"
+  "dependencies": {
+    "vite": "^2.0.1",
+    "vitedge": "^0.7.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   },
-  "bugs": {
-    "url": "https://github.com/frandiox/vitedge/issues"
-  },
-  "homepage": "https://github.com/frandiox/vitedge#readme",
   "devDependencies": {
-    "vitepress": "0.8.1"
+    "@types/node": "^14.14.31",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
   }
 }
